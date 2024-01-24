@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="background-div">
+
+
+    <div id="win-popup" class="popup">
+        <div class="popup-content">
+          <h3>congratulations!</h3>
+          <h3 >you won!</h3>
+          <h3>Secreat code</h3>
+          <h3 id="result"></h3>
+          <button id="CLOSE"   onclick="closePopup()">Close</button>
+        </div>
+      </div>
+
+
+    <audio id="moveAudio">
+        <source src="Move.wav"> 
+        Your browser does not support the audio element.
+      </audio>
+      <audio id="resetAudio">
+        <source src="gameover.wav"> 
+        Your browser does not support the audio element.
+      </audio>
+      <audio id="checkAudio">
+        <source src="Food.wav"> 
+        Your browser does not support the audio element.
+      </audio>
+
+      <h1 style="color: white;margin-left: 23vw;">CRACK CODE</h1>
+     <div id="leveleasy">
+      <a class="checkhover"style="margin-left: 21vw;"   id="resetbtn"href="index.html">EASY LEVEL</a></div>
+     <div id="levelhard"><a class="checkhover"style="margin-left: 0vw;"   id="resetbtn"href="medium.html">HARD LEVEL</a>
+    </div>
+    
+    <button id="resetbtnrulehome"><h3>*****HOW TO PLAY*****</h3>
+    <P>The goal is to guess the four digit code that was generated.<br>
+    There are no repeated numbers in the secret code <br>
+To test a combination click repeatedly on blanks <br>to select the number you want <br>
+if you leave an blank in one of the spaces,<br>it will not be cosidered <br>
+check if the selected combination is correct by <br>
+ clicking on the check button,if  <br>it is incoreect some point will appear aside. <br>
+created points means: <br>
+<li>Yellow point:Means that the code selected has a number <br>in the secret code,But that is NOT placed in the correct <br> position.
+</li>
+<li>Blue point:Means that the code selected has <br> a number in the secret code and its placed <br> in the correct posotion.</li></P><br><br><br><br><br>
+    
+
+    
+    </button>
+   
+  
+
+
+</div>
+
+  
+
+
+<!-- <button  onclick="playsoundreset();openLink();">RESET</button> -->
+
+   <script src="script.js"></script> 
+</body>
+</html>
