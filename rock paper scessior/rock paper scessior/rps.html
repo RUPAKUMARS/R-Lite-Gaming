@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Rock Paper Scessior Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Rock Paper Scessior</h1>
+  <button class="choice-button" onclick="
+  let computerChoice = generateComputerChoice();
+  let resultMsg = getResult('Rock', computerChoice);
+  showResult('Rock', computerChoice, resultMsg);
+  ">
+    <img src="Rock.jpg" alt="Rock Image" class="choice-image">  
+  </button>
+
+  <button class="choice-button" onclick="
+    computerChoice = generateComputerChoice();
+    resultMsg = getResult('Scessior', computerChoice);
+    showResult('Scessior', computerChoice, resultMsg);
+  ">
+    <img src="scissor.jpg" alt="Scessior Image" class="choice-image">  
+  </button>
+
+  <button class="choice-button" onclick="
+    computerChoice = generateComputerChoice();
+    resultMsg = getResult('Paper', computerChoice);
+    showResult('Paper', computerChoice, resultMsg);
+  ">
+    <img src="paper.jpg" alt="Paper Image" class="choice-image">
+  </button>
+
+  <h3 id="user-move"></h3>
+  <h3 id="computer-move"></h3>
+  <h3 id="result"></h3>
+  <h3 id="score"></h3>
+
+  <button class="reset" onclick="localStorage.clear()
+      resetScore();
+  ">Reset</button>
+
+<audio id="rpsAudio">
+  <source src="Food.wav"> 
+  Your browser does not support the audio element.
+</audio>
+<audio id="resetAudio">
+  <source src="archivo.mp3"> 
+  Your browser does not support the audio element.
+</audio>
+
+
+
+  <script>
+
+
+    let scoreStr = localStorage.getItem('Score');
+    let score;
+    resetScore(scoreStr);
+
+    function resetScore(scoreStr) {
+      playsoundreset();
+      score = scoreStr ? JSON.parse(scoreStr) : {
+        win: 0,
+        lost: 0,
+        tie: 0,
+      };
+
+      score.displayScore = function() {
+        return `Score:Won:${score.win}, Lost:${score.lost}, Tie: ${score.tie}`;
+      };
+
+      showResult();
+    }
+
+    function generateComputerChoice() {
+      
+      playsound();
+      let randomNumber = Math.random() * 3;
+      
+      if (randomNumber > 0 && randomNumber <= 1) {
+        return 'Rock';
+      } else if (randomNumber > 1 && randomNumber <= 2) {
+        return 'Scessior';
+      } else {
+        return 'Paper'
+      }
+    
+    }
+
+function playsound() {
+   var audio = document.querySelector('#rpsAudio');
+      audio.play();
+}
+function playsoundreset() {
+   var audio = document.querySelector('#resetAudio');
+      audio.play();
+}
+
+
+
+
+
+    function getResult(userMove, computerMove) {
+      if (userMove === 'Rock') {
+        if (computerMove === 'Scessior') {
+          score.win++;
+          return 'User won.';
+        } else if (computerMove === 'Rock') {
+          score.tie++;
+          return `It's a tie`;
+        } else if (computerMove === 'Paper') {
+          score.lost++;
+          return 'Computer has won';
+        }
+      } else if (userMove === 'Scessior') {
+        if (computerMove === 'Scessior') {
+          score.tie++;
+          return `It's a tie`;
+        } else if (computerMove === 'Rock') {
+          score.lost++;
+          return 'Computer has won';
+        } else if (computerMove === 'Paper') {
+          score.win++;
+          return 'User won.';
+        }
+      } else {
+        if (computerMove === 'Scessior') {
+          score.lost++;
+          return 'Computer has won';
+        } else if (computerMove === 'Rock') {
+          score.win++;
+          return 'User won.';
+        } else if (computerMove === 'Paper') {
+          score.tie++;
+          return `It's a tie`;
+        }
+      }
+    }
+
+    function showResult(userMove, computerMove, result) {
+      localStorage.setItem('Score', JSON.stringify(score));
+      
+      document.querySelector('#user-move').innerText = 
+        userMove ? `You have chosen ${userMove}` : '';
+      
+      document.querySelector('#computer-move').innerText =
+        computerMove ? `Computer choice is ${computerMove}` : '';
+      
+      document.querySelector('#result').innerText = result || '';
+
+      document.querySelector('#score').innerText = score.displayScore();
+    }
+  </script>
+</body>
+</html>

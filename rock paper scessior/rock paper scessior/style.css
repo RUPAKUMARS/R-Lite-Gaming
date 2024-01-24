@@ -1,0 +1,60 @@
+ h1 { margin-top: 10px;
+      color: #0b0a0a; /* Change text color */
+      font-size: 79px; /* Change font size */
+      font-weight: bold; /* Adjust font weight */
+      text-align: center; /* Align text */
+      /* Add more styles as needed */
+    }
+
+
+
+
+
+
+
+body {
+    text-align: center;
+    background-image:url('backbg.jpg');
+    
+  }
+  
+  .choice-button {
+    height: 100px;
+    width: 100px;
+    border: none;
+    margin: 10px;
+    background-color: rgb(239, 244, 236);
+    border-radius: 40px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .choice-image {
+    height: 75px;
+    width: 75px;
+    border-radius:30px ;
+   
+  }
+  .choice-button:hover {
+    box-shadow: 0 0 10px 2px #00ff00;
+  }
+
+
+  .reset{
+    background-color: #3498db; /* Change to your desired color */
+    color: white; /* Text color */
+    border: none; /* Remove default button border */
+    padding: 10px 20px; /* Adjust padding as needed */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+
+  }
+  .reset:hover{
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 0 0 10px 2px #e43c13;
+  }
