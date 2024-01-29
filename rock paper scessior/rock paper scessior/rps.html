@@ -30,10 +30,35 @@
     <img src="paper.jpg" alt="Paper Image" class="choice-image">
   </button>
 
+  <div id="win-popup" class="popup">
+    <div class="popup-content">
+      <h3 class="user-move"></h3>
+      <h3 class="computer-move"></h3>
+      <h3 class="result"></h3>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+
+  <div id="win-popupp" class="popupp">
+    <div class="popupp-content">
+     
+     
+     <img id="rulesimage" alt="">
+     
+     
+      <p></p>
+      <button onclick="closePopupp()">Close</button>
+      <h2 id="rules"></h2>
+    </div>
+  </div>
+
+
+<div class="scoreBoard">
   <h3 id="user-move"></h3>
   <h3 id="computer-move"></h3>
   <h3 id="result"></h3>
-  <h3 id="score"></h3>
+  <h3 id="score"></h3></div>
 
   <button class="reset" onclick="localStorage.clear()
       resetScore();
@@ -66,7 +91,8 @@
       };
 
       score.displayScore = function() {
-        return `Score:Won:${score.win}, Lost:${score.lost}, Tie: ${score.tie}`;
+       
+        return `Score:Won:${score.win}, Lost:${score.lost},Tie: ${score.tie}`;
       };
 
       showResult();
@@ -103,35 +129,38 @@ function playsoundreset() {
     function getResult(userMove, computerMove) {
       if (userMove === 'Rock') {
         if (computerMove === 'Scessior') {
-          score.win++;
+          score.win++;setTimeout(gameWon, 300);
           return 'User won.';
+          
         } else if (computerMove === 'Rock') {
-          score.tie++;
+          score.tie++;setTimeout(gameWon, 300);
           return `It's a tie`;
         } else if (computerMove === 'Paper') {
-          score.lost++;
+          score.lost++;setTimeout(gameWon, 300);
           return 'Computer has won';
         }
       } else if (userMove === 'Scessior') {
         if (computerMove === 'Scessior') {
-          score.tie++;
+          score.tie++;setTimeout(gameWon, 300);
           return `It's a tie`;
         } else if (computerMove === 'Rock') {
-          score.lost++;
+          score.lost++;setTimeout(gameWon, 300);
           return 'Computer has won';
         } else if (computerMove === 'Paper') {
-          score.win++;
+          score.win++;setTimeout(gameWon, 300);
           return 'User won.';
+          
         }
       } else {
         if (computerMove === 'Scessior') {
-          score.lost++;
+          score.lost++;setTimeout(gameWon, 300);
           return 'Computer has won';
         } else if (computerMove === 'Rock') {
-          score.win++;
+          score.win++;setTimeout(gameWon, 300);
           return 'User won.';
+          
         } else if (computerMove === 'Paper') {
-          score.tie++;
+          score.tie++;setTimeout(gameWon, 300);
           return `It's a tie`;
         }
       }
@@ -140,16 +169,67 @@ function playsoundreset() {
     function showResult(userMove, computerMove, result) {
       localStorage.setItem('Score', JSON.stringify(score));
       
-      document.querySelector('#user-move').innerText = 
+      document.querySelector('.user-move').innerText = 
+        userMove ? `You have chosen ${userMove}` : '';
+        document.querySelector('#user-move').innerText 
+        = 
         userMove ? `You have chosen ${userMove}` : '';
       
-      document.querySelector('#computer-move').innerText =
+      document.querySelector('.computer-move').innerText =
+        computerMove ? `Computer choice is ${computerMove}` : '';
+        document.querySelector('#computer-move').innerText =
         computerMove ? `Computer choice is ${computerMove}` : '';
       
+      document.querySelector('.result').innerText = result || '';
       document.querySelector('#result').innerText = result || '';
 
       document.querySelector('#score').innerText = score.displayScore();
     }
+
+
+    function showWinPopup() {
+  const winPopup = document.getElementById('win-popup');
+  winPopup.style.display = 'flex';
+}
+
+function showWinPopupp() {
+  const winPopup = document.getElementById('win-popupp');
+  const rules = document.getElementById('rules');
+  const rulesimage = document.getElementById('rulesimage');
+  winPopup.style.display = 'flex';
+
+  rulesimage.src='Rock Paper Scissors1.png';
+}
+
+// Function to close the popup
+function closePopup() {
+  const winPopup = document.getElementById('win-popup');
+  winPopup.style.display = 'none';
+}
+function closePopupp() {
+  const winPopup = document.getElementById('win-popupp');
+  winPopup.style.display = 'none';
+}
+// Example: Show the popup when the game is won (call this function when the game is won)
+function gameWon() {
+  showWinPopup();
+  setTimeout(function closePopup() {
+  const winPopup = document.getElementById('win-popup');
+  winPopup.style.display = 'none';
+},3000)
+}
+
+window.onload=showWinPopupp();
+  
+  
+
+// Example: Simulate winning the game after some time (remove this in your actual game logic)
+ //
+
+
+
+
+
   </script>
 </body>
 </html>
